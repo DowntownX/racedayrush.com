@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RACEDAYRUSH — field notes from 36-hour adventure races</title>
+<meta name="description" content="What thirty-six hours of cycling, trekking, paddling, and navigation with no sleep teaches you about performance, teams, and the rest of life.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0d0e;
+    --bg-panel: #101315;
+    --ink: #ecedee;
+    --muted: #7b8088;
+    --hair: #21262b;
+    --accent: #c1443a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { background: var(--bg); }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  a { color: inherit; }
+
+  .mono {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  /* ---------- pulse line signature ---------- */
+
+  .pulse-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .pulse-wrap svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .pulse-wrap path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.4;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    opacity: 0.55;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .pulse-wrap path {
+      stroke-dasharray: 6000;
+      stroke-dashoffset: 6000;
+      animation: draw 3.2s 0.2s ease-out forwards;
+    }
+  }
+
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @media (max-width: 720px) {
+    .pulse-wrap { width: 34px; }
+    .pulse-wrap path { stroke-width: 1.1; }
+  }
+
+  /* ---------- layout ---------- */
+
+  .page {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  main {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 0 28px 160px;
+    padding-left: 96px;
+  }
+
+  @media (max-width: 720px) {
+    main { padding-left: 56px; padding-right: 22px; }
+  }
+
+  header {
+    padding-top: 72px;
+    padding-bottom: 56px;
+  }
+
+  .wordmark {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--ink);
+  }
+
+  .eyebrow {
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .rule {
+    border: none;
+    border-top: 1px solid var(--hair);
+    margin: 0;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    padding: 72px 0 64px;
+  }
+
+  .hero h1 {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-weight: 500;
+    font-size: clamp(24px, 4.2vw, 34px);
+    line-height: 1.34;
+    letter-spacing: -0.01em;
+    margin: 0 0 26px;
+    max-width: 17ch;
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: var(--muted);
+    margin: 0;
+    max-width: 42ch;
+  }
+
+  /* ---------- sections ---------- */
+
+  section.entry {
+    padding: 52px 0;
+    border-top: 1px solid var(--hair);
+  }
+
+  section.entry .label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  section.entry p {
+    margin: 0;
+    font-size: 17px;
+    color: var(--ink);
+    max-width: 54ch;
+  }
+
+  section.entry p + p {
+    margin-top: 16px;
+  }
+
+  /* ---------- closing ---------- */
+
+  .stance {
+    padding: 60px 0 0;
+    border-top: 1px solid var(--hair);
+  }
+
+  .stance p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 0;
+  }
+
+  footer {
+    padding-top: 88px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="pulse-wrap" aria-hidden="true">
+    <svg viewBox="0 0 60 2860" preserveAspectRatio="none">
+      <path d="M30,0 L30,0 L30,90 L18,110 L42,60 L52,150 L30,170 L30,260 L30,260 L30,350 L18,370 L42,320 L52,410 L30,430 L30,520 L30,520 L30,610 L18,630 L42,580 L52,670 L30,690 L30,780 L30,780 L30,870 L18,890 L42,840 L52,930 L30,950 L30,1040 L30,1040 L30,1130 L18,1150 L42,1100 L52,1190 L30,1210 L30,1300 L30,1300 L30,1390 L18,1410 L42,1360 L52,1450 L30,1470 L30,1560 L30,1560 L30,1650 L18,1670 L42,1620 L52,1710 L30,1730 L30,1820 L30,1820 L30,1910 L18,1930 L42,1880 L52,1970 L30,1990 L30,2080 L30,2080 L30,2170 L18,2190 L42,2140 L52,2230 L30,2250 L30,2340 L30,2340 L30,2430 L18,2450 L42,2400 L52,2490 L30,2510 L30,2600 L30,2600 L30,2690 L18,2710 L42,2660 L52,2750 L30,2770 L30,2860" />
+    </svg>
+  </div>
+
+  <main>
+
+    <header>
+      <div class="wordmark mono">RACEDAYRUSH</div>
+      <span class="eyebrow mono">Field notes from 36-hour adventure races</span>
+    </header>
+
+    <hr class="rule">
+
+    <section class="hero">
+      <h1>The fastest team in a 36-hour race isn't the fittest one. It's the one that doesn't turn on each other.</h1>
+      <p>Cycling, trekking, paddling, navigation, no sleep, four people, one clock. I've watched this play out enough times to trust it.</p>
+    </section>
+
+    <section class="entry">
+      <span class="label mono">Premise</span>
+      <p>Adventure racing stitches cycling, trekking, paddling, and navigation into one continuous event — thirty-six hours, four to a team, no sleep. Everyone assumes the fittest team wins. I've raced against teams with better numbers than ours and still beaten them, because somewhere around hour twenty their team started eating itself and ours didn't. Fitness gets you to the start line. What happens between people gets you to the finish.</p>
+    </section>
+
+    <section class="entry">
+      <span class="label mono">The hydro cut</span>
+      <p>Hour nineteen. A hydro cut on the map read three miles. On the ground, with the switchbacks, it was closer to eleven. Every bend we thought was the last one wasn't, and I watched my team's spirit go with each false turn. Nobody was fighting. Nobody was talking, which is worse. I told them: "You gotta suffer through it if you want to tell the story." That was the whole intervention. It worked because it was true.</p>
+    </section>
+
+    <section class="entry">
+      <span class="label mono">What nineteen hours does</span>
+      <p>By hour nineteen your legs stop asking your brain for permission. You'll say things you'd never say fresh, and mean less than half of them. I read a teammate's silence the same way I read a compass bearing — as information, not a mood to manage. The one who goes quiet is the one about to break. Watch for that before you watch your split times.</p>
+    </section>
+
+    <section class="entry">
+      <span class="label mono">The unpopular part</span>
+      <p>Most training plans obsess over watts and VO2 max and ignore the thing that actually decides races: whether four people can stay four people for thirty-six hours straight. I'll take three solid athletes who like each other over four strong ones who don't, every time. Nobody wants to hear that fitness is the smaller variable. It is.</p>
+    </section>
+
+    <section class="entry">
+      <span class="label mono">The standard</span>
+      <p>Race day doesn't care how you trained. It asks what's left of you at hour thirty, when the plan is gone and the map has already been wrong twice. You gotta suffer through it if you want to tell the story. It held up in every race I've finished since that hydro cut, and in most of the rest of my life too.</p>
+    </section>
+
+    <div class="stance">
+      <p>I don't sell a program here. This is what a hydro cut at hour nineteen taught me, written down so I stop relearning it.</p>
+    </div>
+
+    <footer class="mono">RACEDAYRUSH · 2026</footer>
+
+  </main>
+
+</div>
+
+</body>
+</html>
